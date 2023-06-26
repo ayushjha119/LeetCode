@@ -11,17 +11,19 @@
  */
 class Solution {
 public:
-    int dfs(TreeNode *root,int curr){
-        if(root==NULL)
-            return 0;
-        curr = curr*10+root->val;
-        
-        if(!root->left && !root->right)
-            return curr;
-        return dfs(root->left,curr)+dfs(root->right,curr);
-    }
+
     
     int sumNumbers(TreeNode* root) {
-        return dfs(root,0);
+         int sum = 0;
+        queue<pair<TreeNode*, int>> q;
+        q.push({root, 0});
+        while(q.size()) {
+            auto [n, cur] = q.front(); q.pop();
+            cur = cur * 10 + n -> val;
+            if(n -> left) q.push({n -> left, cur});      
+            if(n -> right) q.push({n -> right, cur});
+            if(!n -> left && !n -> right) sum += cur;   // add to total sum if we are at leaf node
+        }
+        return sum;
     }
 };
