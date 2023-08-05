@@ -11,16 +11,23 @@
  */
 class Solution {
 public:
+    
+    map<pair<int,int>,vector<TreeNode *>> mp;
      vector<TreeNode*> solve(int start,int end){
          
          if(start>end)
-             return {NULL};
+             return mp[{start,end}] = {NULL};
          if(start==end)
          {
              TreeNode * root = new TreeNode(start);
-             return {root};
+             return mp[{start,end}] = {root};
              
          }
+         if(mp.find({start,end})!=mp.end())
+         {
+             return mp[{start,end}];
+         }
+         
          vector<TreeNode *> result;
          
          for(int i = start;i<=end;i++){
@@ -42,7 +49,7 @@ public:
              }
              
          }
-         return result;
+         return mp[{start,end}] = result;
          
      }
     
