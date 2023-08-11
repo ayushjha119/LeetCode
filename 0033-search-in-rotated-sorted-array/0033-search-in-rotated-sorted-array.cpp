@@ -13,7 +13,7 @@ public:
             }else if(nums[mid]<nums[r]){
                 r = mid;
             }else
-                r = mid;
+                r = mid-1;
         }
         
         return r;
