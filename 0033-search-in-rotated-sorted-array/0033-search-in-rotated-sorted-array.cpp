@@ -10,9 +10,10 @@ public:
             
             if(nums[mid]>nums[r]){
                 l = mid+1;
-            }else{
+            }else if(nums[mid]<nums[r]){
                 r = mid;
-            }
+            }else
+                r = mid;
         }
         
         return r;
