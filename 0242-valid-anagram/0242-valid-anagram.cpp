@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        if (s==t) return true;
+        
         if (s.size()!=t.size()) return false;
        unordered_map<char,int> mp;
         
